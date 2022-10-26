@@ -19,7 +19,7 @@ mesh = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="neck" type="Spatial" parent="."]
+[node name="head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657014, 0 )
 
-[node name="Camera" type="Camera" parent="neck"]
+[node name="Camera" type="Camera" parent="head"]
