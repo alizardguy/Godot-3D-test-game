@@ -37,7 +37,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
 # movement
-	if Input.is_action_just_pressed("move_jump"):
+	if Input.is_action_just_pressed("move_jump") && is_on_floor():
 		fall.y = jump;
 	if Input.is_action_pressed("move_forward"):
 		direction -= transform.basis.z;
