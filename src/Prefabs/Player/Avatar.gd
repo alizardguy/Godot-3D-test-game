@@ -55,5 +55,6 @@ func _process(delta):
 	move_and_slide(fall, Vector3.UP);
 
 func _physics_process(delta):
+	# gravity
 	if not is_on_floor():
 		fall.y -= gravity * delta;

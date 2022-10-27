@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Prefabs/Player/Avatar.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Player/InteractRaycast.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.7
@@ -23,3 +24,11 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657014, 0 )
 
 [node name="Camera" type="Camera" parent="head"]
+
+[node name="InteractRaycast" type="RayCast" parent="head"]
+enabled = true
+cast_to = Vector3( 0, 0, -2.5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "Raycast for the player to interact with the world when E is pressed."
+}
