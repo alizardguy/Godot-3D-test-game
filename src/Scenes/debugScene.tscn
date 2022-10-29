@@ -65,5 +65,8 @@ mesh = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
 shape = SubResource( 4 )
 
-[node name="JumpPad" parent="MeshInstance4" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2387, -0.627822, 2.95499 )
+[node name="JumpPad" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12057, 0, 3.05444 )
+
+[node name="JumpPad2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.339674, -0.940543, 0, 0.940543, 0.339674, 0, 0, 0, 1, 7.074, 1.10564, 7.29185 )

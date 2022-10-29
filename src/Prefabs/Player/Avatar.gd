@@ -103,5 +103,5 @@ func standUpFromCrouch():
 	$crouchingShape.disabled = true;
 	$crouchRaycast.enabled = false;
 
-func jumpPadBoost():
-	fall.y = gravity;
+func jumpPadBoost(BoostDirection):
+	fall.y = BoostDirection;
