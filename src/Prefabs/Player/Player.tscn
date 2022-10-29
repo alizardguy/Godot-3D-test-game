@@ -32,3 +32,5 @@ script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": "Raycast for the player to interact with the world when E is pressed."
 }
+
+[node name="crouchTween" type="Tween" parent="head"]

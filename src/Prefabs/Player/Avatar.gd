@@ -17,6 +17,7 @@ var fall = Vector3();
 
 #refs
 var head = null;
+var crouchTween = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,8 @@ func _ready():
 	head = $head
 	#hides the cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	#ref tweens
+	crouchTween = $head/crouchTween;
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -47,6 +50,15 @@ func _process(delta):
 		direction -= transform.basis.x;
 	elif Input.is_action_pressed("move_right"):
 		direction += transform.basis.x;
+#crouch
+	if Input.is_action_just_pressed("move_crouch"):
+		var headPosCurrent = $head.translation
+		crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.2,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
+		crouchTween.start();
+	elif Input.is_action_just_released("move_crouch"):
+		var headPosCurrent = $head.translation
+		crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.657,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
+		crouchTween.start();
 # apply direction
 	direction = direction.normalized();
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta);
