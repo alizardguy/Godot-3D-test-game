@@ -9,4 +9,6 @@ func _ready():
 func _process(_delta):
 # interact
 	if Input.is_action_just_pressed("player_interact"):
-		print(get_collider());
+		var hitObject = get_collider();
+		if hitObject != null:
+			print(hitObject.get_owner());
