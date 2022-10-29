@@ -15,6 +15,9 @@ var direction = Vector3();
 var velocity = Vector3();
 var fall = Vector3();
 
+# player states
+var crouchUnderObject:bool = false;
+
 #refs
 var head = null;
 var crouchTween = null;
@@ -60,20 +63,42 @@ func _process(delta):
 		crouchTween.start();
 		$CollisionShape.disabled = true;
 		$crouchingShape.disabled = false;
+		$crouchRaycast.enabled = true;
+		crouchUnderObject = false;
 	elif Input.is_action_just_released("move_crouch"):
-		var headPosCurrent = $head.translation
-		crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.657,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
-		crouchTween.start();
-		$CollisionShape.disabled = false;
-		$crouchingShape.disabled = true;
+		if $crouchRaycast.is_colliding():
+			crouchUnderObject = true;
+			pass
+		else:
+			var headPosCurrent = $head.translation
+			crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.657,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
+			crouchTween.start();
+			$CollisionShape.disabled = false;
+			$crouchingShape.disabled = true;
+			$crouchRaycast.enabled = false;
+			crouchUnderObject = false;
 # apply direction
 	direction = direction.normalized();
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta);
 	velocity = move_and_slide(velocity, Vector3.UP);
 # warning-ignore:return_value_discarded
 	move_and_slide(fall, Vector3.UP);
+		
+# reset crouch
+	if crouchUnderObject == true:
+		if !$crouchRaycast.is_colliding():
+			crouchUnderObject = false;
+			standUpFromCrouch();
 
 func _physics_process(delta):
 	# gravity
 	if not is_on_floor():
 		fall.y -= gravity * delta;
+
+func standUpFromCrouch():
+	var headPosCurrent = $head.translation
+	crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.657,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
+	crouchTween.start();
+	$CollisionShape.disabled = false;
+	$crouchingShape.disabled = true;
+	$crouchRaycast.enabled = false;
