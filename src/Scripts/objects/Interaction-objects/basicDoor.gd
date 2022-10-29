@@ -1,4 +1,4 @@
-extends StaticBody
+extends Spatial
 
 
 # Declare member variables here. Examples:
@@ -10,7 +10,6 @@ extends StaticBody
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func player_interact():
+	print("lol");
+	pass
