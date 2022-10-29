@@ -4,7 +4,8 @@ extends KinematicBody
 # player move vars
 var speed = 7;
 var acceleration = 20;
-var gravity = 9.8;
+var gravityOld = 9.8;
+var gravityVec = Vector3(0,9.8,0);
 var jump = 5;
 
 # input setting vars
@@ -55,7 +56,8 @@ func _process(delta):
 		direction += transform.basis.x;
 #unstickyness
 	if is_on_ceiling():
-		fall.y -= gravity;
+		#fall.y -= gravityOld;
+		fall.y = gravityVec.y;
 #crouch
 	if Input.is_action_just_pressed("move_crouch"):
 		var headPosCurrent = $head.translation
@@ -93,7 +95,13 @@ func _process(delta):
 func _physics_process(delta):
 	# gravity
 	if not is_on_floor():
-		fall.y -= gravity * delta;
+		fall.y -= gravityVec.y * delta;
+		fall.x -= gravityVec.x * delta;
+		fall.z -= gravityVec.z * delta;
+	
+	if is_on_floor() or is_on_ceiling() or is_on_wall():
+		fall.z = 0;
+		fall.x = 0;
 
 func standUpFromCrouch():
 	var headPosCurrent = $head.translation
@@ -104,4 +112,6 @@ func standUpFromCrouch():
 	$crouchRaycast.enabled = false;
 
 func jumpPadBoost(BoostDirection):
-	fall.y = BoostDirection;
+	fall.y = BoostDirection.y;
+	fall.x = BoostDirection.x;
+	fall.z = BoostDirection.z;

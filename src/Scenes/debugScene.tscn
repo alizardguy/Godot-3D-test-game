@@ -70,3 +70,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12057, 0, 3.05444 )
 
 [node name="JumpPad2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.339674, -0.940543, 0, 0.940543, 0.339674, 0, 0, 0, 1, 7.074, 1.10564, 7.29185 )
+
+[node name="JumpPad3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.750428, -0.660952, -0.00106999, 0.660951, 0.750428, -0.000956706, 0.00143529, 1.07107e-05, 0.999999, 7.074, 1.10564, 0.0189238 )

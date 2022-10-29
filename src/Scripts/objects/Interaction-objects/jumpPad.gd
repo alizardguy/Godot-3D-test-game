@@ -1,12 +1,11 @@
 extends Spatial
 
-var BoostDirection = 9;
-var BoostDirectionRaw = Vector3(0,9,0);
+var BoostDirection = Vector3(0,9,0);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	BoostDirectionRaw = global_transform.basis.y;
-	print(BoostDirection) # fix later
+	BoostDirection = global_transform.basis.y * 9;
+	print(BoostDirection) 
 	pass
 
 func _physics_process(_delta):
