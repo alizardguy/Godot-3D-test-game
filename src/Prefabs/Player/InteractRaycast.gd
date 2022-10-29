@@ -15,5 +15,4 @@ func _process(_delta):
 		if hitObject != null:
 			hitObject = hitObject.get_owner();
 			print(hitObject);
-			emit_signal("player_interact_Impulse");
 			pass
