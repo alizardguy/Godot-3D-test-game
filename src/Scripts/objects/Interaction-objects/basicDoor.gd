@@ -5,6 +5,6 @@ func _ready():
 	print(get_node("/root/Root/Avatar/head/InteractRaycast"));
 	pass # Replace with function body.
 
-func _on_player_interact_Impulse():
-	print("lol");
+func player_interact():
+	print("a player interacted with me");
 	pass
