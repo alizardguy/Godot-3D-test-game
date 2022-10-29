@@ -1,6 +1,6 @@
 extends RayCast
 
-signal player_interact;
+signal player_interact_Impulse;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +13,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("player_interact"):
 		var hitObject = get_collider();
 		if hitObject != null:
-			print(hitObject.get_owner());
-			emit_signal("player_interact", hitObject);
+			hitObject = hitObject.get_owner();
+			print(hitObject);
+			emit_signal("player_interact_Impulse");
 			pass
