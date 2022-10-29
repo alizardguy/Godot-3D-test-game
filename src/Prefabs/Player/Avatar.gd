@@ -102,3 +102,6 @@ func standUpFromCrouch():
 	$CollisionShape.disabled = false;
 	$crouchingShape.disabled = true;
 	$crouchRaycast.enabled = false;
+
+func jumpPadBoost():
+	fall.y = gravity;
