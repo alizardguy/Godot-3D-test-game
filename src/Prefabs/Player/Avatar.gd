@@ -50,15 +50,22 @@ func _process(delta):
 		direction -= transform.basis.x;
 	elif Input.is_action_pressed("move_right"):
 		direction += transform.basis.x;
+#unstickyness
+	if is_on_ceiling():
+		fall.y -= gravity;
 #crouch
 	if Input.is_action_just_pressed("move_crouch"):
 		var headPosCurrent = $head.translation
 		crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.2,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
 		crouchTween.start();
+		$CollisionShape.disabled = true;
+		$crouchingShape.disabled = false;
 	elif Input.is_action_just_released("move_crouch"):
 		var headPosCurrent = $head.translation
 		crouchTween.interpolate_property($head, "translation", headPosCurrent, Vector3(0,0.657,0), 0.1, Tween.TRANS_LINEAR, Tween.TRANS_LINEAR);
 		crouchTween.start();
+		$CollisionShape.disabled = false;
+		$crouchingShape.disabled = true;
 # apply direction
 	direction = direction.normalized();
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta);
