@@ -32,7 +32,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.657014, 0 )
 
 [node name="InteractRaycast" type="RayCast" parent="head" groups=["player_raycast"]]
 enabled = true
-cast_to = Vector3( 0, 0, -2.5 )
+cast_to = Vector3( 0, 0, -4 )
+collision_mask = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": "Raycast for the player to interact with the world when E is pressed."
