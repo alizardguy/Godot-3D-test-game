@@ -14,6 +14,10 @@ config/name="3D first person game"
 run/main_scene="res://Scenes/debugScene.tscn"
 config/icon="res://Assets/Images/Icons/icon.png"
 
+[autoload]
+
+Global="*res://Scripts/World/Global.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Prefabs/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/doors/basicDoor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/locomotion/jumpPad.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/World Setup/World Data Slot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/buttons/greenSwitch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Prefabs/doors/greenLockedBasicDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Materials/debug/debug_floor1.tres" type="Material" id=7]
@@ -34,11 +33,6 @@ environment = ExtResource( 8 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.988949, 0.148258, 0, -0.148258, 0.988949, 0, 5.44035, 0 )
 shadow_enabled = true
-
-[node name="World Data" parent="." instance=ExtResource( 4 )]
-
-[node name="Green Switch" parent="World Data" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49157, 0, 8.13466 )
 
 [node name="Avatar" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11326, 0 )
@@ -120,3 +114,6 @@ mesh = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance6/StaticBody"]
 shape = SubResource( 6 )
+
+[node name="Green Switch2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49157, 0, 8.13466 )

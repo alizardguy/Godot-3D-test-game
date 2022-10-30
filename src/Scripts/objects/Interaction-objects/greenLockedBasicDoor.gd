@@ -5,10 +5,10 @@ var WorldData = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	WorldData = get_node("/root/Root/World Data");
+	pass
 
 func player_interact():
-	if WorldData.greenSwitchClicked == true:
+	if Global.greenSwitchState == true:
 		var tween = get_node("door pivot/Tween");
 		var current = $"door pivot".rotation_degrees
 		if isOpen == false:
