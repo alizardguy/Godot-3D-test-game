@@ -1,0 +1,10 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+auto_exposure_min_luma = 0.0
+auto_exposure_max_luma = 6.49
+ssao_enabled = true
