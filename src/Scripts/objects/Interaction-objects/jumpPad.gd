@@ -5,10 +5,6 @@ var BoostDirection = Vector3(0,9,0);
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	BoostDirection = global_transform.basis.y * 9;
-	print(BoostDirection) 
-	pass
-
-func _physics_process(_delta):
 	pass
 
 func _on_Area_body_entered(body):

@@ -4,6 +4,7 @@ extends KinematicBody
 # player move vars
 var speed = 7;
 var acceleration = 20;
+var accelerationDefault = 20;
 var gravityOld = 9.8;
 var gravityVec = Vector3(0,9.8,0);
 var jump = 5;
@@ -98,10 +99,15 @@ func _physics_process(delta):
 		fall.y -= gravityVec.y * delta;
 		fall.x -= gravityVec.x * delta;
 		fall.z -= gravityVec.z * delta;
+		acceleration = 2;
 	
 	if is_on_floor() or is_on_ceiling() or is_on_wall():
-		fall.z = 0;
-		fall.x = 0;
+		# redo later; resets the other axis of gravity when player grounds
+		fall.z = gravityVec.z;
+		fall.x = gravityVec.x;
+	
+	if is_on_floor():
+		acceleration = accelerationDefault;
 
 func standUpFromCrouch():
 	var headPosCurrent = $head.translation
